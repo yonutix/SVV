@@ -1,0 +1,11 @@
+<div>
+    <h2>Register page</h2>
+    <form name="registerUser" ng-submit="">
+        <input type="text" required="" placeholder="Name" ng-model="user.name" /><br>
+        <input type="text" required="" placeholder="Surname" ng-model="user.surname" /><br>
+        <input type="email" required="" placeholder="Email" ng-model="user.email" /><br>
+        <input type="password" required="" placeholder="Password" ng-model="user.password" /><br>
+        <input type="password" required="" placeholder="Confirm Password" ng-model="user.password_verify" nx-equal="user.password" /><br>
+        <input type="submit" value="Send" />
+    </form>
+</div>

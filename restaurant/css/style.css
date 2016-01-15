@@ -1,0 +1,10 @@
+table td {
+  table-layout:fixed;
+  width:143px;
+  overflow:hidden;
+  word-wrap:break-word;
+}
+
+div + div {
+   margin-bottom:50px;
+}

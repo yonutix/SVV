@@ -1,0 +1,69 @@
+
+<!--<a href="register.html">Register</a>-->
+<!--<div id="owl-demo" class="owl-carousel owl-theme">-->
+
+<!--<div class="item"><img src="img.jpg" alt="The Last of us"></div>-->
+
+<!--</div>-->
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#">BookEat</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="active"><a href="main.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+                <form class="navbar-form pull-right">
+                    <input class="span2" type="text" placeholder="Email">
+                    <input class="span2" type="password" placeholder="Password">
+                    <button type="submit" class="btn">Sign in</button>
+                </form>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <img src="img.jpg" alt="">
+</div>
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            <td>City:</td>
+            <td>Date:</td>
+            <td>Hour:</td>
+            <td>Number of persons:</td>
+            <td>Restaurant name:</td>
+            <td>Kitchen specific:</td>
+        </tr>
+        </thead>
+    </table>
+    <form class="form-horizontal" role=form">
+        <!--<input class="span2" type="text" placeholder="City" ng-model="search.city">-->
+        <select id="input1" class="span2" name="city" ng-model="search.city">
+            <option value="B">Bucharest</option>
+        </select>
+        <input id="input2" class="span2" type="date" placeholder="Date" ng-model="search.date">
+        <input id="input3" class="span2" type="time" placeholder="Hour" ng-model="search.hour">
+        <input id="input4" class="span2" type="number" placeholder="Persons #" ng-model="search.persons" value="2">
+        <input id="input5" class="span2" type="text" placeholder="Restaurant name" ng-model="search.name">
+        <input id="input6" class="span2" type="text" placeholder="Kitchen specific" ng-model="search.kitchen">
+        <button type="submit" class="btn">Search</button>
+    </form>
+</div>
+
+<div class="container">
+    <hr>
+    <footer>
+        <p>&copy; BookEat 2016</p>
+    </footer>
+</div> <!-- /container -->
