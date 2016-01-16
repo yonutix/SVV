@@ -1,9 +1,9 @@
-(function(){
+//(function(){
     var module = angular.module("restaurantReservations")
 //    module.config(['$controllerProvider', function($controllerProvider) {
 //        $controllerProvider.allowGlobals();
 //    }]);
-
+    module.controller("MainController", MainController)
     var MainController = function($scope, $http) {
         var _selected;
 //        $( "#accordion" ).hide();
@@ -54,17 +54,17 @@
 
         $( "#input6" ).autocomplete({
               source: kitchens
-//              select: function (event, ui) {
-////                          var v = ui.item.value;
-////                          $('#input6').val(ui.item.value);
-//                      }
+              select: function (event, ui) {
+//                          var v = ui.item.value;
+//                          $('#input6').val(ui.item.value);
+                      }
         });
         $( "#accordion" ).accordion();
 
 
 
     };
-    module.controller("MainController", MainController)
 
-}())
+
+//}())
 
