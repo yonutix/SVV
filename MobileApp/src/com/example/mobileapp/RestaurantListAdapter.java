@@ -29,6 +29,9 @@ public class RestaurantListAdapter extends ArrayAdapter<String> {
 		
 		TextView txtTitle = (TextView) rowView.findViewById(R.id.textView);
 		txtTitle.setText(mEntries.get(position).restaurantName);
+		
+		TextView addressTxt = (TextView) rowView.findViewById(R.id.streetText);
+		addressTxt.setText(mEntries.get(position).getAddress());
 		return rowView;
 	}
 }

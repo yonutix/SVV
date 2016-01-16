@@ -3,44 +3,55 @@
 
     var MainController = function($scope, $http) {
         var _selected;
+//        $( "#accordion" ).hide();
+        $scope.selected = undefined;
+        $scope.search = {}
+        $scope.search.city = "Bucharest"
+        $scope.search.numSpots = 2
+        var d = new Date();
+        var year=d.getFullYear();
+        var month=d.getMonth()+1;
+        $scope.restaurants = undefined;
+        if (month<10){
+            month= "0" + month;
+        };
+        var day=d.getDate();
+//        $scope.search.hour = d.getHours() + ":" + d.getMinutes()
+        $scope.search.date = year + "-" + month + "-" + day;
 
-          $scope.selected = undefined;
 
-           $scope.go = function() {
-//           $( "#accordion" ).hide();
-//           alert($scope.search.date);
-        $http.get('http://192.168.0.172:3000/restaurants').then(
-            function successCallback(response) {
-             alert("e ok")
-           }, function errorCallback(response) {
-             alert("error")
-           });
-//    $http.get("http://192.168.0.172:3000/restaurants").then(function(response) {
-//            alert("e ok")
-//        });
-            }
-         var restaurants = ['A', 'B', 'C', 'D', 'E', 'F'];
-         var kitchens=['k1','k2','k3','k4'];
-//         $http.get("http://192.168.0.172:3000/restaurants")
-         $http({
-           method: 'GET',
-           url: 'http://192.168.0.172:3000/restaurants'
-         }).then(function successCallback(response) {
-             alert(response)
-           }, function errorCallback(response) {
-             // called asynchronously if an error occurs
-             // or server returns response with an error status.
-           });
+        $scope.go = function() {
 
- $( "#input5" ).autocomplete({
-      source: restaurants
-    });
- $( "#input6" ).autocomplete({
-      source: kitchens
-    });
- $( "#accordion" ).accordion();
-    };
-    module.controller("MainController", MainController)
+            $http.post('http://192.168.0.172:3000/restaurants', $scope.search).then(
+                function successCallback(response) {
+//                var restaurants = JSON.parse(angular.toJson(response))
+//                restaurants = angular.toJson(restaurants.data)
+                $scope.restaurants = JSON.parse(angular.toJson(response))
+                $scope.restaurants = $scope.restaurants.data
+//                alert(angular.toJson($scope.restaurants))
+                $scope.items = [
+                   {Name: "Soap",  Price: "25",  Quantity: "10"},
+                   {Name: "Bag",   Price: "100", Quantity: "15"},
+                   {Name: "Pen",   Price: "15",  Quantity: "13"}
+               ];
+               }, function errorCallback(response) {
+                 alert("error")
+               });
+//            $( "#accordion" ).show();
+        }
+        var restaurants_names = ['A', 'B', 'C', 'D', 'E', 'F'];
+        var kitchens=['k1','k2','k3','k4'];
+
+
+        $( "#input5" ).autocomplete({
+              source: restaurants_names
+        });
+        $( "#input6" ).autocomplete({
+              source: kitchens
+        });
+        $( "#accordion" ).accordion();
+     };
+     module.controller("MainController", MainController)
 
 }())
 
