@@ -13,3 +13,10 @@ body {
 	font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
 
 }
+
+#map{
+	float:left;
+	margin: 50px;
+	width: 1200px;
+    height: 600px;
+}

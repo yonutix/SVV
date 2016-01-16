@@ -1,5 +1,10 @@
-
-    angular.module("restaurantReservations").controller("MainController", function($scope, $http) {
+//(function(){
+    var module = angular.module("restaurantReservations")
+//    module.config(['$controllerProvider', function($controllerProvider) {
+//        $controllerProvider.allowGlobals();
+//    }]);
+    module.controller("MainController", MainController)
+    var MainController = function($scope, $http) {
         var _selected;
 //        $( "#accordion" ).hide();
         $scope.selected = undefined;
@@ -60,6 +65,6 @@
 
     };
 
-)
 
+//}())
 
