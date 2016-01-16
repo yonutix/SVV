@@ -3,8 +3,6 @@ package com.example.mobileapp;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Date;
-
 public class Grade {
 
     String grade;

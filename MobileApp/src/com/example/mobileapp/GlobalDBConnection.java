@@ -214,6 +214,47 @@ public class GlobalDBConnection {
         return false;
     }
 
+    public boolean book(String name, int numSpots) {
+
+        try {
+            Log.v("Start try", "yonutix");
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+            HttpURLConnection con = (HttpURLConnection) (new URL(IP + "/book")).openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Accept", "application/json");
+            con.setDoInput(true);
+            con.setDoOutput(true);
+            con.connect();
+            Log.v("tag", "yonutix req: " + name + "  " + numSpots);
+            Map<String, Object> comment = new HashMap<String, Object>();
+            comment.put("name", name);
+            comment.put("numSpots", numSpots);
+
+
+            JSONObject jsonX = new JSONObject(comment);
+            String json = jsonX.toString();
+
+            con.getOutputStream().write((json).getBytes());
+
+            Log.v("" + con.getResponseCode(), "yonutix " + json);
+
+
+            return true;
+
+        } catch (Exception e) {
+            Log.v("Request" +
+                    " could not be cofdfmpelted ", "yonutix" + e.getMessage());
+
+
+            for (StackTraceElement ste : e.getStackTrace()) {
+                Log.v("Request could not be cofdfmpelted ", "yonutix " + ste);
+            }
+        }
+        return false;
+    }
+
 
     public boolean confirmRegistration() {
         return true;

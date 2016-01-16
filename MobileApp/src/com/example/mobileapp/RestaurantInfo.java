@@ -10,18 +10,22 @@ import java.util.List;
 import java.util.Map;
 
 public class RestaurantInfo {
+    String id;
     String name;
     String cuisine;
     int freeSpots;
     List<Grade> grades;
+    JSONArray arrayGrades;
+
 
     public RestaurantInfo(String json){
         try {
             name = (new JSONObject(json)).getString("name");
             cuisine = (new JSONObject(json)).getString("cuisine");
             freeSpots = (new JSONObject(json)).getInt("freeSpots");
+            id = (new JSONObject(json)).getString("_id");
 
-            JSONArray arrayGrades = (new JSONObject(json)).getJSONArray("grades");
+            arrayGrades = (new JSONObject(json)).getJSONArray("grades");
             grades = new ArrayList<>();
             for(int i=0;i<arrayGrades.length(); i++){
                 JSONObject gradeJson = arrayGrades.getJSONObject(i);
@@ -36,9 +40,11 @@ public class RestaurantInfo {
 
     public JSONObject serialiser(){
         Map<String, Object> output = new HashMap<>();
+        output.put("_id", id);
         output.put("name", name);
         output.put("cuisine", cuisine);
         output.put("freeSpots", freeSpots);
+        output.put("grades", arrayGrades);
 
         return new JSONObject(output);
     }
