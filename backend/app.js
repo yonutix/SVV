@@ -50,7 +50,7 @@ app.get('/', function (req, res) {
 app.post('/restaurants', function (req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	var collection = db.get().collection('restaurants')
-	var fields = {'fields' : {'name' : 1, 'cuisine' : 1, 'free_spots' : 1}}
+	var fields = {'fields' : {'name' : 1, 'cuisine' : 1, 'free_spots' : 1, 'address' : 1}}
 
 	request = req.body
 	query_object = {}
@@ -72,20 +72,23 @@ app.post('/restaurants', function (req, res) {
 
 });
 
-app.post('/book', function (req, res) {
+app.get('/book', function (req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	var collection = db.get().collection('restaurants')
-	var fields = {'fields' : {'name' : 1, 'cuisine' : 1, 'free_spots' : 1}}
 
 	request = req.body
+	//request = req.query
+	console.log('BOOK LOG: ' + req.body)
 	query_object = {}
 	if ('name' in request) {
 		query_object["name"] = request['name']
 	}
 	if ('numSpots' in request) {
-		query_object["free_spots"] = {'$gte' : request['numSpots']}
+		spots = request['numSpots']
 	}
 
+	collection.update(query_object, {"$inc" : {"free_spots" : -spots}})
+	//collection.findOneAndUpdate({})
 })
 
 app.listen(3000, function () {
