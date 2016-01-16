@@ -27,7 +27,7 @@ public final class R {
         public static final int logo=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f080017;
+        public static final int action_settings=0x7f080018;
         public static final int city_spinner=0x7f080005;
         public static final int complete_reservation=0x7f080013;
         public static final int credentials_validation=0x7f080004;
@@ -49,6 +49,7 @@ public final class R {
         public static final int reservation_confirmed=0x7f080014;
         public static final int reserve_btn=0x7f080015;
         public static final int restaurant_name_reservation=0x7f080007;
+        public static final int streetText=0x7f080017;
         public static final int submit_filter=0x7f080009;
         public static final int textView=0x7f080016;
     }

@@ -12,6 +12,10 @@
               templateUrl: "register.html",
               controller: "RegisterController"
             })
+      .when("/details", {
+              templateUrl: "details.html",
+              controller: "RestaurantDetails"
+            })
       .otherwise({redirectTo:"/main"})
   })
 }())

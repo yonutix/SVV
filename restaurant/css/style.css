@@ -20,3 +20,37 @@ body {
 	width: 1200px;
     height: 600px;
 }
+
+
+input.element_distance{
+	margin-left: 30px;
+}
+
+div.container_details{
+	float:right;
+	width:500px;
+	margin: 50px;
+}
+div.container_reviews{
+	float:left;
+	margin: 50px;
+	width: 1200px;
+    height: 600px;
+}
+
+
+input[type='checkbox'] {
+    width:30px;
+    height:30px;
+    margin-left:30px;
+    margin-top:10px;
+    background:white;
+    border-radius:10px;
+    border:10px solid #555;
+}
+
+#no_border{
+	border: 0px;
+	background:white;
+}
+input[type="text"]:read-only { color: blue; }

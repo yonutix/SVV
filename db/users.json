@@ -1,0 +1,10 @@
+{"_id":{"$oid":"569a99e63b016fc0f72fd501"},"name":"Radu Sandu","type":"client","password":"#R889sa","phone":"+40728865431","email":"radu.savu@yahoo.com","id_restaurant":""}
+{"_id":{"$oid":"569a99ee3b016fc0f72fd502"},"name":"Dumitru Sinea","type":"client","password":"*g4r5f","phone":"+40747623766","email":"dumitru.sinea@gmail.com","id_restaurant":""}
+{"_id":{"$oid":"569a99f63b016fc0f72fd503"},"name":"Roxana Stanciu","type":"client","password":"\u0026gtal90","phone":"+40723351224","email":"roxana.stanciu@yahoo.com","id_restaurant":""}
+{"_id":{"$oid":"569a9a013b016fc0f72fd504"},"name":"Alexandra Milea","type":"client","password":"lo624!0","phone":"+40796650251","email":"alexandra.milea@gmail.com","id_restaurant":""}
+{"_id":{"$oid":"569a9a133b016fc0f72fd505"},"name":"Lavinia Marinescu","type":"client","password":"*5^lkbm2","phone":"+40799561432","email":"lavinia.marinescu@yahoo.com","id_restaurant":""}
+{"_id":{"$oid":"569a9a683b016fc0f72fd506"},"name":"Florentina-Maria Lungan","type":"manager","password":"~ht9pl#5","phone":"+40709875541","email":"florentina_maria.lungan@yahoo.com","id_restaurant":"40361606"}
+{"_id":{"$oid":"569a9a713b016fc0f72fd507"},"name":"Ciprian Beldean","type":"manager","password":"polk5#HT","phone":"+40767775439","email":"ciprian.beldean@gmail.com","id_restaurant":"50002424"}
+{"_id":{"$oid":"569a9a7b3b016fc0f72fd508"},"name":"Robert Toma","type":"manager","password":"rT6\u0026Ae!","phone":"+40797109913","email":"robert.toma@gmail.com","id_restaurant":"40389365"}
+{"_id":{"$oid":"569a9a853b016fc0f72fd509"},"name":"Andreea-Elena Rusan","type":"manager","password":"Ae4R\u0026ulK","phone":"+40701965655","email":"andreea.elenaR@yahoo.com","id_restaurant":"41442614"}
+{"_id":{"$oid":"569a9a8e3b016fc0f72fd50a"},"name":"Emilia-Raluca Istrate","type":"manager","password":"09THErI3","phone":"+40734782132","email":"emilia.ristrate@gmail.com","id_restaurant":"40362432"}

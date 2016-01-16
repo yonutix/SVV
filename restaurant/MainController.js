@@ -1,5 +1,10 @@
+(function(){
+    var module = angular.module("restaurantReservations")
+//    module.config(['$controllerProvider', function($controllerProvider) {
+//        $controllerProvider.allowGlobals();
+//    }]);
 
-    angular.module("restaurantReservations").controller("MainController", function($scope, $http) {
+    var MainController = function($scope, $http) {
         var _selected;
 //        $( "#accordion" ).hide();
         $scope.selected = undefined;
@@ -49,17 +54,17 @@
 
         $( "#input6" ).autocomplete({
               source: kitchens
-              select: function (event, ui) {
-//                          var v = ui.item.value;
-//                          $('#input6').val(ui.item.value);
-                      }
+//              select: function (event, ui) {
+////                          var v = ui.item.value;
+////                          $('#input6').val(ui.item.value);
+//                      }
         });
         $( "#accordion" ).accordion();
 
 
 
     };
+    module.controller("MainController", MainController)
 
-)
-
+}())
 

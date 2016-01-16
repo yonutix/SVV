@@ -31,7 +31,8 @@ public class MainActivity extends Activity {
 	}
 	
 	public void onRegisterButtonPressed(View v){
-		
+		Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+		startActivity(i);
 	}
 	
 	public void onLoginButton(View v){
@@ -51,7 +52,9 @@ public class MainActivity extends Activity {
 		}
 
 		if (login_result == GlobalDBConnection.UserType.MANAGER) {
-
+			Intent i = new Intent(getApplicationContext(), RestaurantManagerActivity.class);
+			i.putExtra("managerEmail", email_textfield.getText().toString());
+			startActivity(i);
 		}
 	}
 	
