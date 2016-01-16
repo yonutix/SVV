@@ -8,7 +8,6 @@ app.use(bodyParser.urlencoded({    // to support URL-encoded bodies
   extended: true
 })); 
 
-
 // Add headers
 app.use(function (req, res, next) {
 
@@ -47,6 +46,19 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
+app.get('/restlist', function(req, res) {
+	res.setHeader('Content-Type', 'application/json');
+	var collection = db.get().collection('restaurants')
+	var fields = {"name" : 1, "_id" : 0}
+	collection.find({}, fields).toArray(function(err, docs) {
+		response = {'restlist' : []}
+		for (doc_id in docs) {
+			response['restlist'].push(docs[doc_id].name)
+		}
+		res.send(response)
+	})
+});
+
 app.post('/restaurants', function (req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	var collection = db.get().collection('restaurants')
@@ -72,13 +84,11 @@ app.post('/restaurants', function (req, res) {
 
 });
 
-app.get('/book', function (req, res) {
+app.post('/book', function (req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	var collection = db.get().collection('restaurants')
 
-	request = req.body
-	//request = req.query
-	console.log('BOOK LOG: ' + req.body)
+	request = req.query
 	query_object = {}
 	if ('name' in request) {
 		query_object["name"] = request['name']
@@ -86,9 +96,17 @@ app.get('/book', function (req, res) {
 	if ('numSpots' in request) {
 		spots = request['numSpots']
 	}
-
-	collection.update(query_object, {"$inc" : {"free_spots" : -spots}})
-	//collection.findOneAndUpdate({})
+	//console.log('BOOK LOG: ' + JSON.stringify(query_object))
+	collection.findOne(query_object, function(err, doc) {
+		if (err || doc == null) {
+			res.send({'response' : 'fail'})
+			console.log("BOOK LOG: error find")
+		} else {
+			freeSpots = doc['free_spots']
+			collection.update(query_object, { "$set" : {"free_spots" : freeSpots - spots}})
+			res.send({'response' : 'success'})
+		}
+	})
 })
 
 app.listen(3000, function () {
