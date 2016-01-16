@@ -20,6 +20,15 @@ public class RegisterActivity extends Activity {
     EditText phoneNo;
     CheckBox manager;
 
+    public void itemClicked(View v) {
+        //code to check if this checkbox is checked!
+        manager = (CheckBox)v;
+       if(manager.isChecked()){
+           Toast.makeText(getApplicationContext(),
+                   "Bro, try Android :)", Toast.LENGTH_LONG).show();
+       }
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,7 +63,7 @@ public class RegisterActivity extends Activity {
             toast.show();
         }else{
             GlobalDBConnection.UserType userType = GlobalDBConnection.UserType.CLIENT;
-            if(manager.isActivated()){
+            if(manager.isChecked()){
                 userType = GlobalDBConnection.UserType.MANAGER;
 
             }
@@ -62,14 +71,13 @@ public class RegisterActivity extends Activity {
                     phoneNo.getText().toString(), userType);
 
             if(newUser.register()){
-                Intent result = new Intent(this, MainActivity.class);
+                Intent result = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(result);
             } else {
-                Context context = getApplicationContext();
                 CharSequence text = "Unable to create user!";
                 int duration = Toast.LENGTH_SHORT;
 
-                Toast toast = Toast.makeText(context, text, duration);
+                Toast toast = Toast.makeText(getApplicationContext(), text, duration);
                 toast.show();
             }
         }

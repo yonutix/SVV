@@ -7,26 +7,19 @@ public class User {
     String email;
     String password;
     String phoneNo;
-    GlobalDBConnection.UserType manager;
+    String manager = GlobalDBConnection.UserType.NONE.name();
 
     public User(String name, String email, String password, String phoneNo, GlobalDBConnection.UserType manager){
         this.name = name;
         this.email = email;
         this.password = password;
         this.phoneNo = phoneNo;
-        this.manager = manager;
+        this.manager = manager.name();
     }
 
-    private String serialise(){
 
-        return "{\"username\":\""+name+"\", \"email\":\""+email+"\", \"phone\":\""+phoneNo
-                + "\", \"password\":\"" + password +"\", \"type\":\""+manager.ordinal()+"\"}";
-
-    }
     public boolean register() {
-
-        String serialised = serialise();
-        return false;
+        return new GlobalDBConnection().createUser(this);
     }
 }
 
