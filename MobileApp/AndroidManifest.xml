@@ -41,6 +41,12 @@
             android:label="@string/title_activity_reservation_page"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
         </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:label="Register" />
+        <activity
+            android:name=".RestaurantManagerActivity"
+            android:label="restaurant_manager" />
     </application>
 
 </manifest>
