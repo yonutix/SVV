@@ -1,0 +1,9 @@
+mongo --host 192.168.0.173 --port 27017
+
+mongoexport --db bookingapp --collection restaurants --out restaurants.json
+mongoimport --db bookingapp --collection restaurants --host 192.168.0.173 --port 27017 --drop --file primer-dataset.json
+
+> use bookingapp
+> show collections
+> show dbs
+> db.restaurants.update({},{$set : {"all_spots":100}},false,true)
