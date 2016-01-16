@@ -26,62 +26,24 @@
     <form class="form-horizontal" role=form">
         <!--<input class="span2" type="text" placeholder="City" ng-model="search.city">-->
         <select id="input1" class="span2" name="city" ng-model="search.city">
-            <option value="B">Bucharest</option>
+            <option value="Bucharest">Bucharest</option>
         </select>
-        <input id="input2" class="span2" type="date" placeholder="Date" ng-model="search.date">
-        <input id="input3" class="span2" type="time" placeholder="Hour" ng-model="search.hour">
-        <input id="input4" class="span2" type="number" placeholder="Persons #" ng-model="search.persons" value="2">
+        <input id="input2" class="span2" type="date" required ng-model="search.date">
+        <input id="input3" class="span2" type="time" required ng-model="search.hour">
+        <input id="input4" class="span2" type="number" placeholder="Persons #" required ng-model="search.numSpots">
         <input id="input5" class="span2" type="text" placeholder="Restaurant name" ng-model="search.name">
-        <input id="input6" class="span2" type="text" placeholder="Kitchen specific" ng-model="search.kitchen">
+        <input id="input6" class="span2" type="text" placeholder="Kitchen specific" ng-model="search.cuisine">
         <button type="submit" class="btn" ng-click='go()'>Search</button>
     </form>
 </div>
-<div id="accordion" >
-    <h3>Section 1</h3>
-    <div>
-        <p>
-            Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-            ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-            amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-            odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-        </p>
-    </div>
-    <h3>Section 2</h3>
-    <div>
-        <p>
-            Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-            purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-            velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-            suscipit faucibus urna.
-        </p>
-    </div>
-    <h3>Section 3</h3>
-    <div>
-        <p>
-            Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-            Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-            ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-            lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-        </p>
-        <ul>
-            <li>List item one</li>
-            <li>List item two</li>
-            <li>List item three</li>
-        </ul>
-    </div>
-    <h3>Section 4</h3>
-    <div>
-        <p>
-            Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-            et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-            faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-            mauris vel est.
-        </p>
-        <p>
-            Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-            inceptos himenaeos.
-        </p>
+<div id="accordion">
+    <div ng-repeat="item in restaurants">
+        <h3>{{item.name}}</h3>
+        <div>
+            <p>
+                Cuisine: {{item.cuisine}}
+            </p>
+        </div>
     </div>
 </div>
 <div class="container">
