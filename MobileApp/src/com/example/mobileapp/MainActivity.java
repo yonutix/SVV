@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
@@ -38,7 +39,8 @@ public class MainActivity extends Activity {
 		GlobalDBConnection.UserType login_result;
 		login_result = GlobalDBConnection.getInst().tryLogin(email_textfield.getText().toString(), password_textfield.getText().toString());
 		if (login_result == GlobalDBConnection.UserType.NONE) {
-
+			TextView credential_validation = (TextView)findViewById(R.id.credentials_validation);
+			credential_validation.setVisibility(View.VISIBLE);
 		}
 
 		if (login_result == GlobalDBConnection.UserType.CLIENT) {

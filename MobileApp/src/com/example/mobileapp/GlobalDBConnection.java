@@ -1,5 +1,7 @@
 package com.example.mobileapp;
 
+import java.util.Vector;
+
 import android.util.Log;
 
 public class GlobalDBConnection {
@@ -38,6 +40,20 @@ public class GlobalDBConnection {
 	
 	//-------------------------------------------------
 	//Sarch restaurants
+	
+	public String[] getRestaurantNames(){
+		String[] result = {"Restaurant 1","Restaurant 2", "Restaurant 3"};
+		
+		return result;
+	}
+	
+	public Vector<RestaurantEntry> getRestaurants(){
+		Vector<RestaurantEntry>  data = new Vector<RestaurantEntry>();
+		data.add(new RestaurantEntry());
+		data.add(new RestaurantEntry());
+		data.add(new RestaurantEntry());
+		return data;
+	}
 	
 	
 	

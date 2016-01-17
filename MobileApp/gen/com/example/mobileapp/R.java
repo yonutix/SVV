@@ -24,24 +24,49 @@ public final class R {
     public static final class drawable {
         public static final int bkg=0x7f020000;
         public static final int ic_launcher=0x7f020001;
+        public static final int logo=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f080004;
+        public static final int action_settings=0x7f080012;
+        public static final int city_spinner=0x7f080005;
+        public static final int complete_reservation=0x7f08000f;
+        public static final int credentials_validation=0x7f080004;
+        public static final int date_picker_reserve=0x7f080007;
         public static final int email=0x7f080001;
+        public static final int email_reservation=0x7f08000b;
+        public static final int first_name_reservation=0x7f080009;
+        public static final int hour_picker=0x7f080008;
+        public static final int last_name_reservation=0x7f08000a;
+        public static final int listview=0x7f080006;
         public static final int log_in_btn=0x7f080003;
+        public static final int number_of_persons_reservation=0x7f08000d;
+        public static final int observations_reservations=0x7f08000e;
         public static final int password=0x7f080002;
+        public static final int phone_nr_reservation=0x7f08000c;
         public static final int register_btn=0x7f080000;
+        public static final int reserve_btn=0x7f080010;
+        public static final int textView=0x7f080011;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
+        public static final int activity_normal_user_search_list=0x7f030001;
+        public static final int activity_reservation_page=0x7f030002;
+        public static final int activity_restaurant_details=0x7f030003;
+        public static final int list_item=0x7f030004;
     }
     public static final class menu {
         public static final int main=0x7f070000;
+        public static final int normal_user_search_list=0x7f070001;
+        public static final int reservation_page=0x7f070002;
+        public static final int restaurant_details=0x7f070003;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050001;
+        public static final int title_activity_normal_user_search_list=0x7f050003;
+        public static final int title_activity_reservation_page=0x7f050005;
+        public static final int title_activity_restaurant_details=0x7f050004;
     }
     public static final class style {
         /** 
