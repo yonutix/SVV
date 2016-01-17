@@ -6,6 +6,7 @@
 
     var MainController = function($scope, $http) {
         var _selected;
+
 //        $( "#accordion" ).hide();
         $scope.selected = undefined;
         $scope.search = {}
@@ -19,19 +20,29 @@
             month= "0" + month;
         };
         var day=d.getDate();
-//        $scope.search.hour = d.getHours() + ":" + d.getMinutes()
+       $scope.search.hour = (d.getHours()+1) + ":"
+                                        + d.getMinutes() + ":00"
+
         $scope.search.date = year + "-" + month + "-" + day;
         var prices = ["Cheap", "Affordable", "Expensive"]
-        $scope.go = function() {
 
-            $http.post('http://192.168.0.172:3000/restaurants', $scope.search).then(
+        $scope.go = function() {
+        var name=$( "#input5" ).val();
+        var cuisine=$( "#input6" ).val();
+        if (name!="")
+            $scope.search.name=name;
+        if (cuisine!="")
+            $scope.search.cuisine=cuisine;
+
+            $http.post('http://localhost:3000/restaurants', $scope.search).then(
                 function successCallback(response) {
 //                var restaurants = JSON.parse(angular.toJson(response))
 //                restaurants = angular.toJson(restaurants.data)
                 $scope.restaurants = JSON.parse(angular.toJson(response))
                 $scope.restaurants = $scope.restaurants.data
-//                alert(angular.toJson($scope.restaurants))
+             //   alert(angular.toJson($scope.restaurants))
                 $scope.range = prices[$scope.restaurants.priceRange]
+                   $( "#accordion" ).accordion();
                }, function errorCallback(response) {
                  alert("error")
                });
@@ -41,7 +52,7 @@
                         'Chinese', 'Bakery', 'Turkish', 'Caribbean', 'Chicken', 'Donuts', 'Bagels/Pretzels',
                         'Continental', 'Pizza', 'Steak', 'Italian', 'German', 'Sandwiches/Salads/Mixed Buffet'];
 
-        $http.get('http://192.168.0.172:3000/restlist').then(
+        $http.get('http://localhost:3000/restlist').then(
             function successCallback(response) {
             $scope.restaurants_names = JSON.parse(angular.toJson(response)).data.restlist
             $( "#input5" ).autocomplete({
@@ -59,7 +70,8 @@
 ////                          $('#input6').val(ui.item.value);
 //                      }
         });
-        $( "#accordion" ).accordion();
+
+
 
 
 

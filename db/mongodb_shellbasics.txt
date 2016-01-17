@@ -1,7 +1,11 @@
 mongo --host 192.168.0.173 --port 27017
 
+mongoimport --db bookingapp --collection restaurantsf --file restaurantsf.json
+mongoimport --db bookingapp --collection users --file users.json
+===============================================================
 mongoexport --db bookingapp --collection restaurants --out restaurants.json
 mongoimport --db bookingapp --collection restaurantsf --host 192.168.0.173 --port 27017 --drop --file primer-dataset.json
+
 
 > use bookingapp
 > show collections
