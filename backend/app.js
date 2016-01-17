@@ -62,7 +62,8 @@ app.get('/restlist', function(req, res) {
 app.post('/restaurants', function (req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	var collection = db.get().collection('restaurantsf')
-	var fields = {'fields' : {'name' : 1, 'cuisine' : 1, 'free_spots' : 1, 'address' : 1}}
+	var fields = {'fields' : {'name' : 1, 'cuisine' : 1, 'free_spots' : 1, 'address' : 1,
+							  'telefon' : 1, 'price' : 1, 'website' : 1}}
 
 	request = req.body
 	query_object = {}
