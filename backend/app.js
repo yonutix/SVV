@@ -30,7 +30,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-mongo_addr = "192.168.0.173"
+mongo_addr = "localhost"
 
 // Connect to Mongo on start
 db.connect('mongodb://' + mongo_addr + ':27017/bookingapp', function(err) {
@@ -48,7 +48,7 @@ app.get('/', function (req, res) {
 
 app.get('/restlist', function(req, res) {
 	res.setHeader('Content-Type', 'application/json');
-	var collection = db.get().collection('restaurants')
+	var collection = db.get().collection('restaurantsf')
 	var fields = {"name" : 1, "_id" : 0}
 	collection.find({}, fields).toArray(function(err, docs) {
 		response = {'restlist' : []}
@@ -61,7 +61,7 @@ app.get('/restlist', function(req, res) {
 
 app.post('/restaurants', function (req, res) {
 	res.setHeader('Content-Type', 'application/json');
-	var collection = db.get().collection('restaurants')
+	var collection = db.get().collection('restaurantsf')
 	var fields = {'fields' : {'name' : 1, 'cuisine' : 1, 'free_spots' : 1, 'address' : 1}}
 
 	request = req.body
@@ -86,7 +86,7 @@ app.post('/restaurants', function (req, res) {
 
 app.post('/book', function (req, res) {
 	res.setHeader('Content-Type', 'application/json');
-	var collection = db.get().collection('restaurants')
+	var collection = db.get().collection('restaurantsf')
 
 	request = req.query
 	query_object = {}
