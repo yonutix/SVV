@@ -5,6 +5,11 @@ table td {
   word-wrap:break-word;
 }
 
-div + div {
+#picture {
    margin-bottom:50px;
+}
+
+body {
+	font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+
 }

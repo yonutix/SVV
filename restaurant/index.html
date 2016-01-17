@@ -2,9 +2,18 @@
 <html ng-app="restaurantReservations">
 
 <head>
+    <meta charset="utf-8">
     <script data-require="angular.js@1.2.25" data-server="1.2.25" src="https://code.angularjs.org/1.2.25/angular.js"></script>
     <script data-require="angular-route@1.2.25" data-semver="1.2.25" src="https://code.angularjs.org/1.2.25/angular-route.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>-->
+
+
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
@@ -23,20 +32,49 @@
     <script src="js/bootstrap-collapse.js"></script>
     <script src="js/bootstrap-carousel.js"></script>
     <script src="js/bootstrap-typeahead.js"></script>
-    <!--<script src="MainController.js"></script>-->
+    <script src="MainController.js"></script>
+
+
     <!--<script src="RegisterController.js"></script>-->
 
     <!-- css -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">-->
 
 </head>
 
 <body>
+<nav  class="navbar navbar-default" role="navigation">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#">BookEat</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="active"><a href="#/main">Home</a></li>
+                    <li><a href="#/about">About</a></li>
+                    <li><a href="#/contact">Contact</a></li>
+                    <li><a href="#/register">Register</a></li>
+                </ul>
+                <form class="navbar-form pull-right">
+                    <input class="span2" type="text" placeholder="Email">
+                    <input class="span2" type="password" placeholder="Password">
+                    <button type="submit" class="btn">Sign in</button>
+                </form>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</nav>
+
 <div ng-view></div>
 </body>
+
 
 </html>
