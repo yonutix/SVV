@@ -3,6 +3,7 @@ package com.example.mobileapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,7 +54,8 @@ public class MainActivity extends Activity {
 
 		if (login_result == GlobalDBConnection.UserType.MANAGER) {
 			Intent i = new Intent(getApplicationContext(), RestaurantManagerActivity.class);
-			i.putExtra("managerEmail", email_textfield.getText().toString());
+			i.putExtra("managerEmail", ""+email_textfield.getText().toString());
+			Log.v("mada", ""+email_textfield.getText().toString());
 			startActivity(i);
 		}
 	}

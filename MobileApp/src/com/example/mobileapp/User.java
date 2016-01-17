@@ -19,7 +19,7 @@ public class User {
 
 
     public boolean register() {
-        return new GlobalDBConnection().createUser(this);
+        return  GlobalDBConnection.getInst().createUser(this);
     }
 }
 

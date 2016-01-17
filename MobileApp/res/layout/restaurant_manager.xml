@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/bkg"
     android:layout_height="match_parent">
 
     <TextView
@@ -26,14 +27,15 @@
         android:layout_gravity="center_horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Tables number"
-            android:id="@+id/textView6" />
+            android:id="@+id/textView6"
+            android:layout_weight="1" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
@@ -50,7 +52,32 @@
         android:layout_gravity="center_horizontal" />
 
     <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="268dp"
+        android:id="@+id/listViewGrades" />
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listViewGrades" />
+        android:layout_gravity="center_horizontal"
+        android:weightSum="1">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:id="@+id/ok"
+            android:layout_weight="0.50"
+            android:onClick="onOkButtonPressed"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:id="@+id/edit"
+            android:layout_weight="0.50"
+            android:onClick="onEditButtonPressed"/>
+    </LinearLayout>
+
 </LinearLayout>

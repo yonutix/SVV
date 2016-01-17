@@ -6,8 +6,10 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Vector;
 
 import org.json.JSONArray;
@@ -37,6 +39,27 @@ public class GlobalDBConnection {
 
     static GlobalDBConnection singleton = null;
 
+
+    public static RestaurantInfo getRestaurantInfo(String restaurantName) {
+
+        RestaurantInfo mock = new RestaurantInfo();
+        mock.name = restaurantName;
+        mock.cuisine = "Continental";
+        mock.freeSpots = new Random().nextInt(50);
+        mock.grades = new ArrayList<>();
+        Grade g1 = new Grade();
+        g1.grade = "Very nice place";
+        g1.score = 5;
+        mock.grades.add(g1);
+
+        Grade g2 = new Grade();
+        g2.grade = "Good food";
+        g2.score = 5;
+        mock.grades.add(g2);
+
+        return mock;
+    }
+
     enum UserType {NONE, CLIENT, MANAGER}
 
     ;
@@ -51,7 +74,7 @@ public class GlobalDBConnection {
 
     }
 
-    public GlobalDBConnection() {
+    private GlobalDBConnection() {
         email = new String();
         password = new String();
 
@@ -62,7 +85,7 @@ public class GlobalDBConnection {
         Log.v("Login attempt with" + email + "  " + password, "yonutix");
         this.email = email;
         this.password = password;
-        return UserType.CLIENT;
+        return UserType.MANAGER;
     }
 
     public String getEmail() {

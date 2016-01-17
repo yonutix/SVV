@@ -24,8 +24,7 @@ public class RegisterActivity extends Activity {
         //code to check if this checkbox is checked!
         manager = (CheckBox)v;
        if(manager.isChecked()){
-           Toast.makeText(getApplicationContext(),
-                   "Bro, try Android :)", Toast.LENGTH_LONG).show();
+
        }
     }
 

@@ -8,6 +8,7 @@ public class Grade {
     String grade;
     int score;
 
+    public Grade(){}
     public Grade(JSONObject json){
         try {
             grade = json.getString("grade");
