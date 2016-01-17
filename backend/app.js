@@ -85,6 +85,34 @@ app.post('/restaurants', function (req, res) {
 
 });
 
+app.post('/login', function (req, res) {
+	res.setHeader('Content-Type', 'application/json');
+	var collection = db.get().collection('users')
+	var fields = {'_id' : 0, "password" : 0}
+	
+
+	request = req.body
+	query_object = {'email' : 'e', 'password' : 'p'}
+	if ('email' in request) {
+		query_object['email'] = request['email']
+	}
+	if ('password' in request) {
+		query_object['password'] = request['password']
+	}
+
+	collection.findOne(query_object, fields, function(err, doc) {
+		if (err || doc == null) {
+			console.log("LOGIN failed")
+			res.send({'response' : 'fail'})
+		} else {
+			doc['response'] = 'success'
+			console.log("LOGIN: " + doc)
+			res.send(doc)
+		}
+	})
+});
+
+
 app.post('/book', function (req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	var collection = db.get().collection('restaurantsf')
