@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var db = require('./db')
 var bodyParser = require('body-parser')
+var crypto = require('crypto')
 
 app.use(bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({    // to support URL-encoded bodies
@@ -85,6 +86,7 @@ app.post('/restaurants', function (req, res) {
 
 });
 
+
 app.post('/login', function (req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	var collection = db.get().collection('users')
@@ -139,6 +141,69 @@ app.post('/newuser', function(req, res) {
 		})
 	}
 });
+
+app.post('/newrestaurant', function (req, res) {
+	res.setHeader('Content-Type', 'application/json');
+	var collection = db.get().collection('restaurantsf')
+	var users = db.get().collection('users')
+	var fields = {'fields' : {'name' : 1, 'cuisine' : 1, 'free_spots' : 1, 'address' : 1,
+							  'telefon' : 1, 'price' : 1, 'website' : 1}}
+	request = req.body
+	query_object = {}
+	if (!('email' in request) || !('name' in request) || !('cuisine' in request) ||
+		!('all_spots' in request) || !('telefon' in request) || !('price' in request) || 
+		!('website' in request)) { 
+		res.send({"response" : "fail"})
+	} else {
+		//create hash for new restaurant
+		name = request['name'] + request['cuisine'] + request['telefon'] + request['price']
+		h = crypto.createHash('md5').update(name).digest('hex')
+		mail = request['email']
+		delete request['email']
+		request['restaurant_id'] = h
+
+		//update restaurants table
+		collection.insertOne(request, function(err, r) {
+			if (!err && r.insertedCount == 1) {
+				//update id_restaurant in users table
+				users.updateOne({"email" : mail}, {$set : {"id_restaurant" : h}}, function(err, r) {
+					if (!err) {
+						console.log("/newrestaurant success")
+						res.send({"response" : "success", 
+								  "restaurant_id" : h})
+					} else {
+						res.send({"response" : "fail"})
+					}
+				});
+			} else {
+				res.send({"response" : "fail"})
+			}
+		})
+	}
+});
+
+app.post('/getrestaurant', function(req, res) {
+	res.setHeader('Content-Type', 'application/json');
+	var collection = db.get().collection('restaurantsf')
+	var fields = {'fields' : {'name' : 1, 'cuisine' : 1, 'free_spots' : 1, 'address' : 1,
+							  'telefon' : 1, 'price' : 1, 'website' : 1}}
+
+	request = req.body
+	if (!('restaurant_id' in request)) {
+		res.send({"response" : "fail"})
+	} else {
+		collection.findOne({"restaurant_id" : request["restaurant_id"]}, fields, function(err, doc) {
+			console.log("/getrestaurant err = " + err)
+			console.log("/getrestaurant doc = " + doc)
+			if (err == null && doc != null) {
+				res.send(doc)
+			} else {
+				res.send({"response" : "fail"})
+			}
+		});
+	}
+});
+
 
 app.post('/book', function (req, res) {
 	res.setHeader('Content-Type', 'application/json');
