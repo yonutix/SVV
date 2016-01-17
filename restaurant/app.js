@@ -12,10 +12,14 @@
               templateUrl: "register.html",
               controller: "RegisterController"
             })
-      .when("/details", {
+      .when("/details/:restId?/:email?", {
               templateUrl: "details.html",
-              controller: "RestaurantDetails"
+              controller: "RestaurantController"
             })
+      .when("/reservation", {
+                templateUrl: "reservation.html",
+                controller: "ReservationController"
+              })
       .otherwise({redirectTo:"/main"})
   })
 }())

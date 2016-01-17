@@ -1,41 +1,28 @@
-
-<div id="map"></div> 
+<div id="map"></div>
 
 <div class="container_details">
     <h2>Restaurant Details</h2>
     <form name="restaurantDetails">
-      <label for="operationHours">Operation hours:</label>
-	  <input type="text" id="operationHours" class="element_distance" ng-readonly="!checked"><br>
-	  
-	  <label for="menuLink">Menu link:</label>
-	  <input type="text" id="menuLink" class="element_distance" ng-readonly="!checked"><br>
-	  
-	  <label  for="priceRange">Price range:</label>
-	  <input type="text" id="priceRange" class="element_distance" ng-readonly="!checked"><br>
-	  
-	  <h3>Contact</h3>
-	  <label for="website" class="element_distance">Website:</label>
-	  <input type="text" id="website" class="element_distance" ng-readonly="!checked"><br>
-	  
-	  <label for="phone" class="element_distance">Phone:</label>
-	  <input type="text" id="phone" class="element_distance" ng-readonly="!checked"><br>	
-	  
-	  <br><h3>Edit details</h3>
-	  <input type="checkbox" id="checkbox_edit" ng-model="checked">
-	</form>
-</div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" class="element_distance" ng-readonly="!checked" ng-model="details.name"><br>
 
-<div class="container_reviews" >
-    <h2>Restaurant reviews</h2>
-    <div>
-        <ul>
-            <li>
-            Rating 
-            <input type="text" id="rating" class="no_border" readonly>
-           	<input type="text" id="ratingDate" class="no_border" readonly>
-            </li>
-            <li>Review 2</li>
-            <li>Review 3</li>
-        </ul>
-    </div>
+          <label for="capacity">Capacity:</label>
+          <input type="text" id="capacity" class="element_distance" ng-readonly="!checked" ng-model="details.free_spots"><br>
+
+          <label for="cuisine">Cuisine:</label>
+          <input type="text" id="cuisine" class="element_distance" ng-readonly="!checked" ng-model="details.cuisine"><br>
+
+          <label  for="priceRange">Price range:</label>
+          <input type="text" id="priceRange" class="element_distance" ng-readonly="!checked" ng-model="details.price"><br>
+
+          <h3>Contact</h3>
+          <label for="website" class="element_distance">Website:</label>
+          <input type="text" id="website" class="element_distance" ng-readonly="!checked" ng-model="details.website"><br>
+
+          <label for="phone" class="element_distance">Phone:</label>
+          <input type="text" id="phone" class="element_distance" ng-readonly="!checked" ng-model="details.telefon"><br>
+
+          <input type="checkbox" id="checkbox_edit" ng-model="checked">
+          <button id="btn" type="submit" ng-click="save()" class="btn" >Save!</button>
+	</form>
 </div>

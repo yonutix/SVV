@@ -37,21 +37,25 @@
         <button type="submit" class="btn" ng-click='go()'>Search</button>
     </form>
 </div>
-<div id="accordion">
-    <div ng-repeat="item in restaurants">
-        <h3>{{item.name}}</h3>
-        <div>
+
+    <div class="accordion">
+        <div ng-repeat="item in restaurants">
+        <h3>{{item.name}}&nbsp;&nbsp; <button type="submit" class="btn" ng-click="book(item)">Book it!</button></h3>
+
+            <div>
             <p>
                 Cuisine: {{item.cuisine}} <br>
                 Website: {{item.website}}<br>
-                Phone number: {{item.phone}}<br>
+                Phone number: {{item.telefon}}<br>
                 Adress: {{item.address.street}}, {{item.address.building}}<br>
-                Price range: {{item.range}}<br>
+                Price range: {{item.price}}<br>
                 <!--<div id="map"> </div>-->
             </p>
         </div>
     </div>
-</div>
+    </div>
+
+
 <!--<div layout="column" ng-cloak>
     <md-content class="md-padding">
         <form ng-submit="$event.preventDefault()">

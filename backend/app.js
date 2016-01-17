@@ -153,32 +153,47 @@ app.post('/newrestaurant', function (req, res) {
 	if (!('email' in request) || !('name' in request) || !('cuisine' in request) ||
 		!('all_spots' in request) || !('telefon' in request) || !('price' in request) || 
 		!('website' in request)) { 
-		res.send({"response" : "fail"})
+		res.send({"response" : "fail1"})
 	} else {
 		//create hash for new restaurant
 		name = request['name'] + request['cuisine'] + request['telefon'] + request['price']
 		h = crypto.createHash('md5').update(name).digest('hex')
 		mail = request['email']
 		delete request['email']
-		request['restaurant_id'] = h
-
-		//update restaurants table
-		collection.insertOne(request, function(err, r) {
-			if (!err && r.insertedCount == 1) {
-				//update id_restaurant in users table
-				users.updateOne({"email" : mail}, {$set : {"id_restaurant" : h}}, function(err, r) {
-					if (!err) {
-						console.log("/newrestaurant success")
-						res.send({"response" : "success", 
-								  "restaurant_id" : h})
-					} else {
-						res.send({"response" : "fail"})
-					}
-				});
-			} else {
-				res.send({"response" : "fail"})
-			}
-		})
+		if (!('restaurant_id' in request)) {
+			console.log("no id")
+			request['restaurant_id'] = h
+			//update restaurants table
+			collection.insertOne(request, function(err, r) {
+				if (!err && r.insertedCount == 1) {
+					//update id_restaurant in users table
+					users.updateOne({"email" : mail}, {$set : {"id_restaurant" : h}}, function(err, r) {
+						if (!err) {
+							console.log("/newrestaurant success")
+							res.send({"response" : "success", 
+									  "restaurant_id" : h})
+						} else {
+							res.send({"response" : "fail2"})
+						}
+					});
+				} else {
+					res.send({"response" : "fail3"})
+				}
+			})
+		}
+		else {
+			console.log("found id")
+			console.log(request)
+			collection.updateOne({"restaurant_id" : request['restaurant_id']}, {$set : request}, function(err, r) {
+				if (!err) {
+					res.send({"response" : "success", 
+							"restaurant_id" : request['restaurant_id']})
+				} else {
+					res.send({"response" : "fail3"})
+				}
+			})
+		}
+		
 	}
 });
 

@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>Reservation page</h2>
+    <form id="reservation" name="bookRestaurant" ng-submit="">
+        <input id="input1" class="span2" type="text" ng-model="search.city" readonly>
+        <input id="input2" class="span2" type="date"  ng-model="search.date" readonly>
+        <input id="input3" class="span2" type="time"  ng-model="search.hour" readonly>
+        <input id="input4" class="span2" type="number" placeholder="Persons #"  ng-model="search.numSpots" readonly>
+        <input id="input5" class="span2" type="text" placeholder="Restaurant name" ng-model="search.name" readonly>
+        <input id="input6" class="span2" type="text" placeholder="Kitchen specific" ng-model="search.cuisine" readonly>
+
+        <input type="text" required="" placeholder="Name" ng-model="user.name" /><br>
+        <input type="text" required="" placeholder="Phone" ng-model="user.phone" /><br>
+        <input type="email" required="" placeholder="Email" ng-model="user.email" /><br>
+        <button type="submit" ng-click="bookNow()" class="btn">Book it!</button>
+    </form>
+    <div id="successful_res"> Your reservation has been confirmed! Thank you!</div>
+    <div id="failure_res"> Your reservation has not been confirmed! Please, try again!</div>
+</div>

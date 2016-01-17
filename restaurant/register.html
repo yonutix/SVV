@@ -1,11 +1,14 @@
 <div class="container">
     <h2>Register page</h2>
-    <form name="registerUser" ng-submit="">
+    <form id="register" name="registerUser" ng-submit="">
         <input type="text" required="" placeholder="Name" ng-model="user.name" /><br>
-        <input type="text" required="" placeholder="Surname" ng-model="user.surname" /><br>
         <input type="email" required="" placeholder="Email" ng-model="user.email" /><br>
+        <input type="text" required="" placeholder="Phone" ng-model="user.phone" /><br>
         <input type="password" required="" placeholder="Password" ng-model="user.password" /><br>
         <input type="password" required="" placeholder="Confirm Password" ng-model="user.password_verify" nx-equal="user.password" /><br>
-        <input type="submit" value="Send" />
+        <button type="submit" ng-click="register()" class="btn">Send</button>
     </form>
+
+    <div id="successful_res"> Your registration has been confirmed! Enjoy!</div>
+    <div id="failure_res"> Your registration has not been confirmed! Please, try again!</div>
 </div>

@@ -1,13 +1,12 @@
 (function(){
     var module = angular.module("restaurantReservations")
-//    module.config(['$controllerProvider', function($controllerProvider) {
-//        $controllerProvider.allowGlobals();
-//    }]);
 
-    var MainController = function($scope, $http) {
+    var MainController = function($scope, $http, $location, $rootScope) {
+       Number.prototype.pad = function (len) {
+           return (new Array(len+1).join("0") + this).slice(-len);
+       }
         var _selected;
 
-//        $( "#accordion" ).hide();
         $scope.selected = undefined;
         $scope.search = {}
         $scope.search.city = "Bucharest"
@@ -20,8 +19,8 @@
             month= "0" + month;
         };
         var day=d.getDate();
-       $scope.search.hour = (d.getHours()+1) + ":"
-                                        + d.getMinutes() + ":00"
+       $scope.search.hour = (d.getHours()+1).pad(2) + ":"
+                                        + d.getMinutes().pad(2) + ":00"
 
         $scope.search.date = year + "-" + month + "-" + day;
         var prices = ["Cheap", "Affordable", "Expensive"]
@@ -36,18 +35,15 @@
 
             $http.post('http://localhost:3000/restaurants', $scope.search).then(
                 function successCallback(response) {
-//                var restaurants = JSON.parse(angular.toJson(response))
-//                restaurants = angular.toJson(restaurants.data)
                 $scope.restaurants = JSON.parse(angular.toJson(response))
                 $scope.restaurants = $scope.restaurants.data
-             //   alert(angular.toJson($scope.restaurants))
-                $scope.range = prices[$scope.restaurants.priceRange]
-                   $( "#accordion" ).accordion();
+
                }, function errorCallback(response) {
                  alert("error")
                });
-//            $( "#accordion" ).show();
-        }
+        };
+
+
         var kitchens=['American ','Irish','Delicatessen','Hamburgers', 'Ice Cream, Gelato, Yogurt, Ices',
                         'Chinese', 'Bakery', 'Turkish', 'Caribbean', 'Chicken', 'Donuts', 'Bagels/Pretzels',
                         'Continental', 'Pizza', 'Steak', 'Italian', 'German', 'Sandwiches/Salads/Mixed Buffet'];
@@ -65,18 +61,20 @@
 
         $( "#input6" ).autocomplete({
               source: kitchens
-//              select: function (event, ui) {
-////                          var v = ui.item.value;
-////                          $('#input6').val(ui.item.value);
-//                      }
         });
 
-
-
-
+        $scope.book = function(item) {
+            $rootScope.search = {}
+            $rootScope.search.name = item.name;
+            $rootScope.search.cuisine = item.cuisine;
+            $rootScope.search.city = $scope.search.city;
+            $rootScope.search.date = $scope.search.date;
+            $rootScope.search.hour = $scope.search.hour;
+            $rootScope.search.numSpots = $scope.search.numSpots;
+            $location.path('/reservation/');
+        };
 
     };
     module.controller("MainController", MainController)
 
 }())
-
