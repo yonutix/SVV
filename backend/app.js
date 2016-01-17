@@ -112,6 +112,33 @@ app.post('/login', function (req, res) {
 	})
 });
 
+app.post('/newuser', function(req, res) {
+	res.setHeader('Content-Type', 'application/json');
+	var collection = db.get().collection('users')
+	request = req.body
+	query_object = {}
+
+	if (!('name' in request) || !('type' in request) || !('password' in request) ||
+		!('phone' in request) || !('email' in request)) { 
+		res.send({"response" : "fail"})
+	} else {
+		query_object = {'email' : request['email']}
+		collection.findOne(query_object, function(err, doc) {
+			if (!err && doc == null) {
+				request['id_restaurant'] = ''
+				collection.insertOne(request, function(err, r) {
+					if (!err && r.insertedCount == 1) {
+						res.send({"response" : "success"})
+					} else {
+						res.send({"response" : "fail"})
+					}
+				})
+			} else {
+				res.send({"response" : "fail"})
+			}
+		})
+	}
+});
 
 app.post('/book', function (req, res) {
 	res.setHeader('Content-Type', 'application/json');
