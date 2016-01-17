@@ -215,7 +215,7 @@ app.post('/book', function (req, res) {
 		query_object["name"] = request['name']
 	}
 	if ('numSpots' in request) {
-		spots = request['numSpots']
+		var spots = request['numSpots']
 	}
 	//console.log('BOOK LOG: ' + JSON.stringify(query_object))
 	collection.findOne(query_object, function(err, doc) {
