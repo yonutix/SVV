@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -39,16 +40,39 @@ class OnAppListListener implements OnItemClickListener{
 
  }
 
+class KitchenSpecificListener  implements OnItemSelectedListener{
+	Context mContext;
+	public KitchenSpecificListener(Context context){
+		mContext = context;
+	}
+
+	@Override
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}
+
 
 public class NormalUserSearchList extends Activity implements OnItemSelectedListener{
 	
 	ListView chooseRestaurant;
 	
-	
+	KitchenSpecificListener kitchenSpecificListener;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_normal_user_search_list);
+		
+		kitchenSpecificListener = new KitchenSpecificListener(this);
+		
 		
 		chooseRestaurant = (ListView) findViewById(R.id.listview);
 		
@@ -82,6 +106,15 @@ public class NormalUserSearchList extends Activity implements OnItemSelectedList
 
 		// attaching data adapter to spinner
 		spinner.setAdapter(dataAdapter);
+		
+		Spinner kitchenSpinner = (Spinner) findViewById(R.id.kitchen_profile);
+		List<String> kitchenCategories = new ArrayList<String>();
+		kitchenCategories.add("Italian");
+		kitchenCategories.add("French");
+		
+		kitchenSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,
+				kitchenCategories));
+		kitchenSpinner.setOnItemSelectedListener(kitchenSpecificListener);
 	}
 
 	@Override

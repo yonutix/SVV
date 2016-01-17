@@ -27,25 +27,30 @@ public final class R {
         public static final int logo=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f080012;
+        public static final int action_settings=0x7f080017;
         public static final int city_spinner=0x7f080005;
-        public static final int complete_reservation=0x7f08000f;
+        public static final int complete_reservation=0x7f080013;
         public static final int credentials_validation=0x7f080004;
-        public static final int date_picker_reserve=0x7f080007;
+        public static final int date_picker_reserve=0x7f08000b;
         public static final int email=0x7f080001;
-        public static final int email_reservation=0x7f08000b;
-        public static final int first_name_reservation=0x7f080009;
-        public static final int hour_picker=0x7f080008;
-        public static final int last_name_reservation=0x7f08000a;
-        public static final int listview=0x7f080006;
+        public static final int email_reservation=0x7f08000f;
+        public static final int first_name_reservation=0x7f08000d;
+        public static final int hour_picker=0x7f08000c;
+        public static final int kitchen_profile=0x7f080008;
+        public static final int last_name_reservation=0x7f08000e;
+        public static final int listview=0x7f08000a;
         public static final int log_in_btn=0x7f080003;
-        public static final int number_of_persons_reservation=0x7f08000d;
-        public static final int observations_reservations=0x7f08000e;
+        public static final int number_of_persons_reservation=0x7f080011;
+        public static final int observations_reservations=0x7f080012;
         public static final int password=0x7f080002;
-        public static final int phone_nr_reservation=0x7f08000c;
+        public static final int person_count_reservation=0x7f080006;
+        public static final int phone_nr_reservation=0x7f080010;
         public static final int register_btn=0x7f080000;
-        public static final int reserve_btn=0x7f080010;
-        public static final int textView=0x7f080011;
+        public static final int reservation_confirmed=0x7f080014;
+        public static final int reserve_btn=0x7f080015;
+        public static final int restaurant_name_reservation=0x7f080007;
+        public static final int submit_filter=0x7f080009;
+        public static final int textView=0x7f080016;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

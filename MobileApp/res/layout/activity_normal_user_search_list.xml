@@ -10,6 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#000000"
         android:text="City:" />
 
     <Spinner
@@ -18,6 +19,56 @@
       android:layout_height="wrap_content"/>
     
     
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:text="Number of persons:" />
+    
+    <EditText
+        android:id="@+id/person_count_reservation"
+        android:inputType="number"
+        android:textColor="#000000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3FFFFFFF"
+        android:ems="10" />
+    
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:text="Restaurant name:" />
+    
+    <EditText
+        android:id="@+id/restaurant_name_reservation"
+        android:layout_width="match_parent"
+        android:textColor="#000000"
+        android:layout_height="wrap_content"
+        android:background="#3FFFFFFF"
+        android:ems="10" />
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:textColor="#000000"
+        android:layout_height="wrap_content"
+        android:text="Kitchen specific fields:" />
+    
+    <Spinner
+      android:id="@+id/kitchen_profile"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"/>
+    
+    <Button
+        android:id="@+id/submit_filter"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:onClick="onSubmitFilter"
+        android:text="Submit"
+        android:background="#3FFFFFFF"
+        android:textSize="60px" />
     
 
     <ListView
@@ -26,4 +77,6 @@
         android:layout_height="match_parent" >
     </ListView>
 
+    
+    
 </LinearLayout>

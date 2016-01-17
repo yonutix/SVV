@@ -1,8 +1,5 @@
 package com.example.mobileapp;
 
-import java.util.Calendar;
-import java.util.TimeZone;
-
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -10,7 +7,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.TextView;
 
 public class ReservationPageActivity extends Activity {
 
@@ -39,6 +38,16 @@ public class ReservationPageActivity extends Activity {
 	}
 	
 	public void onDatePickerClicked(View v){
+	}
+	
+	public void onCompleteReservationPressed(View v){
+		Button completeReservation = (Button)findViewById(R.id.complete_reservation);
+		completeReservation.setEnabled(false);
+		if(GlobalDBConnection.getInst().confirmRegistration()){
+			Log.v("Complete reservation", "yonutix");
+			TextView confirmReservationResponse = (TextView)findViewById(R.id.reservation_confirmed);
+			confirmReservationResponse.setVisibility(View.VISIBLE);
+		}
 	}
 
 	@Override

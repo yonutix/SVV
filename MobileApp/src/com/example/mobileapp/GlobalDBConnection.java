@@ -56,6 +56,10 @@ public class GlobalDBConnection {
 	}
 	
 	
+	public boolean confirmRegistration(){
+		return true;
+	}
+	
 	
 	public static GlobalDBConnection getInst(){
 		if (singleton == null){
