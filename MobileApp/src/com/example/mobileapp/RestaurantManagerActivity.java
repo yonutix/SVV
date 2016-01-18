@@ -46,7 +46,7 @@ public class RestaurantManagerActivity extends Activity {
         for (int i = 0; i < restaurant.grades.size(); i++) {
             gradeSum[i] = "Review " + i;
         }
-        gradesList.setAdapter(new GradesListAdapter(this, gradeSum, new Vector<>(restaurant.grades)));
+        gradesList.setAdapter(new GradesListAdapter(this, gradeSum, new Vector<Grade>(restaurant.grades)));
     }
 
     public void onOkButtonPressed(View v) {

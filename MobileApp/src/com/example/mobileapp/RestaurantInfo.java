@@ -28,7 +28,7 @@ public class RestaurantInfo {
             id = (new JSONObject(json)).getString("_id");
 
             arrayGrades = (new JSONObject(json)).getJSONArray("grades");
-            grades = new ArrayList<>();
+            grades = new ArrayList<Grade>();
             for (int i = 0; i < arrayGrades.length(); i++) {
                 JSONObject gradeJson = arrayGrades.getJSONObject(i);
 
@@ -41,7 +41,7 @@ public class RestaurantInfo {
     }
 
     public JSONObject serialiser() {
-        Map<String, Object> output = new HashMap<>();
+        Map<String, Object> output = new HashMap<String, Object>();
         output.put("_id", id);
         output.put("name", name);
         output.put("cuisine", cuisine);

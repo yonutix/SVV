@@ -46,7 +46,7 @@ public class GlobalDBConnection {
         mock.name = restaurantName;
         mock.cuisine = "Continental";
         mock.freeSpots = new Random().nextInt(50);
-        mock.grades = new ArrayList<>();
+        mock.grades = new ArrayList<Grade>();
         Grade g1 = new Grade();
         g1.grade = "Very nice place";
         g1.score = 5;
